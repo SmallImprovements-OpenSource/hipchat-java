@@ -1,13 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'groovy'
-apply plugin: 'maven'
-apply plugin: 'signing'
+apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+}
 
 repositories {
     mavenCentral()
     maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 group = 'io.evanwong.oss'
 version = "0.4.2"
